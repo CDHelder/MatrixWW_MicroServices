@@ -1,0 +1,25 @@
+﻿@model List<MatrixWW.Web.Models.Api.Product>
+
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr class="columnHeader">
+                <th>Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Brand</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+           {
+               <tr>
+                    <td>@product.Name</td>
+                    <td>@product.Price</td>
+                    <td>@product.CategoryName</td>
+                    <td>@product.BrandName</td>
+                </tr>
+           }
+        </tbody>
+    </table>
+</div>

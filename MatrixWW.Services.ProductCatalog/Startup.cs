@@ -34,11 +34,25 @@ namespace MatrixWW.Services.ProductCatalog
                 });
             services.AddDatabaseDeveloperPageExceptionFilter();
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MatrixWW.Services.ProductCatalog", Version = "v1" });
             });
+
+            //Voor als je andere front-end gebruikt
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("Cors", policy =>
+            //    {
+            //        policy.WithOrigins(Configuration.GetSection("Clients")["Mvc"])
+            //           .AllowAnyHeader()
+            //           .AllowAnyMethod()
+            //           .AllowCredentials();
+            //    });
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +68,8 @@ namespace MatrixWW.Services.ProductCatalog
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            //app.UseCors("Cors");
 
             app.UseAuthorization();
 
