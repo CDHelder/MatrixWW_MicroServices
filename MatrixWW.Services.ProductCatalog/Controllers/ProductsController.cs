@@ -46,7 +46,7 @@ namespace MatrixWW.Services.ProductCatalog.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(int id, Product product)
+        public async Task<IActionResult> UpdateProduct(int id, Product product)
         {
             if (id != product.Id)
             {
@@ -75,7 +75,7 @@ namespace MatrixWW.Services.ProductCatalog.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Product>> PostProduct(Product product)
+        public async Task<ActionResult<Product>> CreateProduct(Product product)
         {
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
@@ -93,9 +93,14 @@ namespace MatrixWW.Services.ProductCatalog.Controllers
             }
 
             _context.Products.Remove(product);
-            await _context.SaveChangesAsync();
+            var deleteResult = await _context.SaveChangesAsync();
 
-            return NoContent();
+            if (deleteResult <= 0)
+            {
+                return NoContent();
+            }
+
+            return Ok();
         }
 
         private bool ProductExists(int id)

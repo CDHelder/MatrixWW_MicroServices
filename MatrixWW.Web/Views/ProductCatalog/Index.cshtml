@@ -18,7 +18,10 @@
                     <td>@product.Price</td>
                     <td>@product.CategoryName</td>
                     <td>@product.BrandName</td>
-                    <td >Details</td>
+                    <td>
+                        <a asp-route-id="@product.Id" asp-controller="ProductCatalog" asp-action="Details">Details</a> |
+                        <a asp-route-id="@product.Id" asp-controller="ProductCatalog" asp-action="Delete">Delete</a>
+                    </td>
                 </tr>
             }
         </tbody>

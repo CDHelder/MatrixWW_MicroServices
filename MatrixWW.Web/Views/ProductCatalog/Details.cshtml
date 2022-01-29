@@ -1,0 +1,30 @@
+﻿<h3>@Model.Name</h3>
+
+<div class="row">
+    <table class="table">
+        <thead>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Price</td>
+                <td>@Model.Price</td>
+            </tr>
+            <tr>
+                <td>Category</td>
+                <td>@Model.CategoryName</td>
+            </tr>
+            <tr>
+                <td>Brand</td>
+                <td>@Model.BrandName</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>@Model.Description</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-controller="ProductCatalog" asp-action="Index">Back to List</a>
+    <a asp-route-id="@Model.Id" asp-controller="ProductCatalog" asp-action="Delete">Delete</a>
+</div>
