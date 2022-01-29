@@ -16,6 +16,12 @@ namespace MatrixWW.Web.Services
             this.client = httpClient;
         }
 
+        public async Task<Product> Get(int id)
+        {
+            var response = await client.GetAsync($"api/products/{id}");
+            return await response.ReadContentAs<Product>();
+        }
+
         public async Task<IEnumerable<Product>> GetAll()
         {
             var response = await client.GetAsync("api/products");
