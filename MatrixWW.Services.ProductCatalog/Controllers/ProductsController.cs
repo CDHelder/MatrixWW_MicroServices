@@ -25,7 +25,6 @@ namespace MatrixWW.Services.ProductCatalog.Controllers
             _mapper = mapper;
         }
 
-        // GET: api/Products
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
@@ -33,7 +32,6 @@ namespace MatrixWW.Services.ProductCatalog.Controllers
             return Ok(_mapper.Map<IEnumerable<ProductDTO>>(products));
         }
 
-        // GET: api/Products/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
@@ -44,11 +42,9 @@ namespace MatrixWW.Services.ProductCatalog.Controllers
                 return NotFound();
             }
 
-            return product;
+            return Ok(_mapper.Map<ProductDTO>(product));
         }
 
-        // PUT: api/Products/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(int id, Product product)
         {
@@ -78,8 +74,6 @@ namespace MatrixWW.Services.ProductCatalog.Controllers
             return NoContent();
         }
 
-        // POST: api/Products
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct(Product product)
         {
@@ -89,7 +83,6 @@ namespace MatrixWW.Services.ProductCatalog.Controllers
             return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
 
-        // DELETE: api/Products/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {

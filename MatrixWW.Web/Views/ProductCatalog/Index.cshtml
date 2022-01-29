@@ -12,14 +12,15 @@
         </thead>
         <tbody>
             @foreach (var product in Model)
-           {
-               <tr>
+            {
+                <tr>
                     <td>@product.Name</td>
                     <td>@product.Price</td>
                     <td>@product.CategoryName</td>
                     <td>@product.BrandName</td>
+                    <td >Details</td>
                 </tr>
-           }
+            }
         </tbody>
     </table>
 </div>
